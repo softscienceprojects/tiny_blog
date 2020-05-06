@@ -17,6 +17,7 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128))
     about_me = db.Column(db.String(140))
     last_seen = db.Column(db.DateTime, default = datetime.utcnow)
+    posts = db.relationship('Post', backref='author', lazy='dynamic')
     followed = db.relationship(
         'User', secondary=followers,
         primaryjoin=(followers.c.follower_id == id),
@@ -46,7 +47,16 @@ class User(UserMixin, db.Model):
             self.followed.remove(user)
 
     def is_following(self, user): #helper method
-        return self.followed.filter(followers.c.followed_id == user.id).count() > 0
+        return self.followed.filter(
+            followers.c.followed_id == user.id).count() > 0
+
+    def followed_posts(self):
+        followed = Post.query.join( #1- followers association table, 2- join condition
+            followers, (followers.c.followed_id == Post.user_id)).filter(
+                # i want the posts from people where i am their follower
+                followers.c.follower_id == self.id)
+        own = Post.query.filter_by(user_id = self.id)
+        return followed.union(own).order_by(Post.timestamp.desc())
 
 @login.user_loader
 def load_user(id):
