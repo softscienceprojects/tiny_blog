@@ -9,3 +9,24 @@
 2020-05-06 19:28:39,406 INFO: Tiny blog start up [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:40]
 2020-05-06 19:37:46,533 INFO: Tiny blog start up [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:40]
 2020-05-06 19:38:15,020 INFO: Tiny blog start up [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:40]
+2020-05-06 20:06:26,335 INFO: Tiny blog start up [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:40]
+2020-05-06 20:06:51,948 ERROR: Exception on /unfollow/e [GET] [in /Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py:1892]
+Traceback (most recent call last):
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/erinjohnson/Development/tiny_blog/app/routes.py", line 122, in unfollow
+    flash('You are now following {}'.format(usrname))
+NameError: name 'usrname' is not defined
+2020-05-06 20:08:50,322 INFO: Tiny blog start up [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:40]

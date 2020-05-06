@@ -55,7 +55,7 @@ class User(UserMixin, db.Model):
             followers, (followers.c.followed_id == Post.user_id)).filter(
                 # i want the posts from people where i am their follower
                 followers.c.follower_id == self.id)
-        own = Post.query.filter_by(user_id = self.id)
+        own = Post.query.filter_by(user_id = self.id) #assign user_id (me) to self.id - try filter_by(self.id) - does this work?
         return followed.union(own).order_by(Post.timestamp.desc())
 
 @login.user_loader
