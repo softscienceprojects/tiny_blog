@@ -4,6 +4,11 @@
     {% if title %}{{ title }} - Tiny blog{% else %}Welcome to Tiny blog{% endif %}
 {% endblock %}
 
+{% block scripts %}
+    {{ super() }} <!-- preserve the content from the base template. if you don't use super() then 'any content defined for this block in the base template will be lost.' -->
+    {{ moment.include_moment() }} 
+{% endblock %}
+
 {% block navbar %}
     <nav class="navbar navbar-default">
         <div class="container">
