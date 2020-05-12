@@ -96,3 +96,4 @@ AttributeError: 'str' object has no attribute 'decode'
 2020-05-11 18:32:33,290 INFO: Tiny blog start up [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:44]
 2020-05-11 18:36:35,901 INFO: Tiny blog start up [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:44]
 2020-05-11 20:53:22,554 INFO: Tiny blog start up [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:46]
+2020-05-12 19:34:21,939 INFO: Tiny blog start up [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:46]
