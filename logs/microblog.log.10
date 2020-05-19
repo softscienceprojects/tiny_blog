@@ -1,4 +1,42 @@
-2020-05-19 13:48:47,768 ERROR: Exception on /send_message/r [GET] [in /Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py:1892]
+2020-05-19 13:50:47,153 ERROR: Exception on /send_message/r [GET] [in /Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py:1892]
+Traceback (most recent call last):
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/erinjohnson/Development/tiny_blog/app/main/routes.py", line 117, in send_message
+    form=form, recipient=recipient)
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/templating.py", line 138, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 930, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 883, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 857, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/jinja2/loaders.py", line 127, in load
+    code = environment.compile(source, name, filename)
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 638, in compile
+    self.handle_exception(source=source_hint)
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/erinjohnson/Development/tiny_blog/app/templates/send_message.html", line 5, in template
+    <h1>{{ 'Send message to %(recipient)s', recipient=recipient }}</h1>
+jinja2.exceptions.TemplateSyntaxError: expected token 'end of print statement', got '='
+2020-05-19 14:19:22,787 INFO: Tinyblog startup [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:71]
+2020-05-19 14:19:31,841 ERROR: Exception on /send_message/r [GET] [in /Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py:1892]
 Traceback (most recent call last):
   File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -15,27 +53,7 @@ Traceback (most recent call last):
   File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
   File "/Users/erinjohnson/Development/tiny_blog/app/main/routes.py", line 116, in send_message
-    return render_template('send_message.html', title=_('Send Message'),
-NameError: name '_' is not defined
-2020-05-19 13:49:13,565 INFO: Tinyblog startup [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:71]
-2020-05-19 13:49:15,497 ERROR: Exception on /send_message/r [GET] [in /Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py:1892]
-Traceback (most recent call last):
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 1821, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "/Users/erinjohnson/Development/tiny_blog/app/main/routes.py", line 117, in send_message
-    form=form, recipient=recipient)
+    return render_template('send_message.html', title='Send Message', form=form, recipient=recipient)
   File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/templating.py", line 138, in render_template
     ctx.app.jinja_env.get_or_select_template(template_name_or_list),
   File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 930, in get_or_select_template
@@ -55,41 +73,4 @@ Traceback (most recent call last):
   File "/Users/erinjohnson/Development/tiny_blog/app/templates/send_message.html", line 5, in template
     <h1>{{ 'Send message to %(recipient)s', recipient=recipient }}</h1>
 jinja2.exceptions.TemplateSyntaxError: expected token 'end of print statement', got '='
-2020-05-19 13:49:21,848 ERROR: Exception on /send_message/r [GET] [in /Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py:1892]
-Traceback (most recent call last):
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 1821, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "/Users/erinjohnson/Development/tiny_blog/app/main/routes.py", line 117, in send_message
-    form=form, recipient=recipient)
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/templating.py", line 138, in render_template
-    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 930, in get_or_select_template
-    return self.get_template(template_name_or_list, parent, globals)
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 883, in get_template
-    return self._load_template(name, self.make_globals(globals))
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 857, in _load_template
-    template = self.loader.load(self, name, globals)
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/jinja2/loaders.py", line 127, in load
-    code = environment.compile(source, name, filename)
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 638, in compile
-    self.handle_exception(source=source_hint)
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 832, in handle_exception
-    reraise(*rewrite_traceback_stack(source=source))
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/jinja2/_compat.py", line 28, in reraise
-    raise value.with_traceback(tb)
-  File "/Users/erinjohnson/Development/tiny_blog/app/templates/send_message.html", line 5, in template
-    <h1>{{ 'Send message to %(recipient)s', recipient=recipient }}</h1>
-jinja2.exceptions.TemplateSyntaxError: expected token 'end of print statement', got '='
-2020-05-19 13:50:44,597 INFO: Tinyblog startup [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:71]
+2020-05-19 14:23:13,962 INFO: Tinyblog startup [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:71]

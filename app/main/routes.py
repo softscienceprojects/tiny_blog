@@ -137,7 +137,7 @@ def messages():
 def notifications():
     since = request.args.get('since', 0.0, type=float)
     notifications = current_user.notifications.filter(
-        Notification.timestamp.asc())
+        Notification.timestamp > since).order_by(Notification.timestamp.asc())
     return jsonify([{
         'name': n.name,
         'data': n.get_data(),

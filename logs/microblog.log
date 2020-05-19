@@ -1,4 +1,4 @@
-2020-05-19 15:05:16,309 ERROR: Exception on /notifications [GET] [in /Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py:1892]
+2020-05-19 15:05:36,238 ERROR: Exception on /notifications [GET] [in /Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py:1892]
 Traceback (most recent call last):
   File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1248, in _execute_context
     cursor, statement, parameters, context
