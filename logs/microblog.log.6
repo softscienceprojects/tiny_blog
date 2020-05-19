@@ -1,4 +1,4 @@
-2020-05-14 14:16:26,786 ERROR: Exception on /favicon.ico [GET] [in /Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py:1892]
+2020-05-14 14:27:37,133 ERROR: Exception on /favicon.ico [GET] [in /Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py:1892]
 Traceback (most recent call last):
   File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
     rv = self.dispatch_request()
@@ -37,31 +37,15 @@ Traceback (most recent call last):
     raise value.with_traceback(tb)
   File "/Users/erinjohnson/Development/tiny_blog/app/templates/errors/404.html", line 1, in top-level template code
     {% extends "base.html" %}
-  File "/Users/erinjohnson/Development/tiny_blog/app/templates/base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
-    {%- block html %}
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
-    {% block body -%}
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 21, in block "body"
-    {% block navbar %}
-  File "/Users/erinjohnson/Development/tiny_blog/app/templates/base.html", line 22, in block "navbar"
-    <a class="navbar-brand" href="{{ url_for('index') }}">Microblog</a>
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/helpers.py", line 370, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 2216, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/helpers.py", line 358, in url_for
-    endpoint, values, method=method, force_external=external
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/werkzeug/routing.py", line 2179, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'index'. Did you mean 'main.index' instead?
-2020-05-14 14:27:35,420 INFO: Tinyblog startup [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:71]
-2020-05-14 14:27:36,931 ERROR: Exception on / [GET] [in /Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py:1892]
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/erinjohnson/Development/tiny_blog/app/templates/base.html", line 22, in template
+    <a class="navbar-brand" href="{{ url_for(main.index') }}">Microblog</a>
+jinja2.exceptions.TemplateSyntaxError: expected token ',', got 'string'
+2020-05-14 14:30:31,253 INFO: Tinyblog startup [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:71]
+2020-05-14 14:30:33,788 ERROR: Exception on / [GET] [in /Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py:1892]
 Traceback (most recent call last):
   File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -77,6 +61,24 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "/Users/erinjohnson/Development/tiny_blog/app/main/routes.py", line 30, in index
-    page, app.config['POSTS_PER_PAGE'], False) #same level as 'return' so we can reference it in index
-NameError: name 'app' is not defined
+  File "/Users/erinjohnson/Development/tiny_blog/app/main/routes.py", line 33, in index
+    return render_template('index.html', title='Home', posts=posts.items, form=form, next_url=next_url, prev_url=prev_url)
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/erinjohnson/Development/tiny_blog/app/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/erinjohnson/Development/tiny_blog/app/templates/base.html", line 22, in template
+    <a class="navbar-brand" href="{{ url_for(main.index') }}">Microblog</a>
+jinja2.exceptions.TemplateSyntaxError: expected token ',', got 'string'

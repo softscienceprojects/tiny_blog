@@ -75,6 +75,22 @@ class User(UserMixin, db.Model):
         own = Post.query.filter_by(user_id = self.id) #assign user_id (me) to self.id - try filter_by(self.id) - does this work?
         return followed.union(own).order_by(Post.timestamp.desc())
 
+    messages_sent = db.relationship('Message', 
+        foreign_keys='Message.sender_id', 
+        backref='author',
+        lazy='dynamic')
+
+    messages_received = db.relationship('Message',
+        foreign_keys='Message.recipient_id',
+        backref='recipient',
+        lazy='dynamic')
+    
+    last_message_read_time = db.Column(db.DateTime)
+
+    def new_messages(self):
+        last_read_time = self.last_message_read_time or datetime(1900, 1,1)
+        return Message.query.filter_by(recipient=self).filter(Message.timestamp > last_read_time.count())
+
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
@@ -87,3 +103,13 @@ class Post(db.Model):
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)
+
+class Message(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    sender_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    recipient_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    body = db.Column(db.String(140))
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+
+    def __repr__(self):
+        return 'Message {}'.format(self.body)
