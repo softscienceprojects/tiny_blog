@@ -1,51 +1,13 @@
-2020-05-14 14:30:33,949 ERROR: Exception on /favicon.ico [GET] [in /Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py:1892]
+2020-05-19 15:03:49,522 ERROR: Exception on /notifications [GET] [in /Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py:1892]
 Traceback (most recent call last):
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 1926, in dispatch_request
-    self.raise_routing_exception(req)
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 1908, in raise_routing_exception
-    raise request.routing_exception
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/ctx.py", line 350, in match_request
-    result = self.url_adapter.match(return_rule=True)
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/werkzeug/routing.py", line 1945, in match
-    raise NotFound()
-werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1248, in _execute_context
+    cursor, statement, parameters, context
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 590, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: near "ASC": syntax error
 
-During handling of the above exception, another exception occurred:
+The above exception was the direct cause of the following exception:
 
-Traceback (most recent call last):
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 1816, in handle_user_exception
-    return self.handle_http_exception(e)
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 1744, in handle_http_exception
-    return handler(e)
-  File "/Users/erinjohnson/Development/tiny_blog/app/errors/handlers.py", line 8, in not_found_error
-    return render_template('errors/404.html'), 404
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/templating.py", line 140, in render_template
-    ctx.app,
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/templating.py", line 120, in _render
-    rv = template.render(context)
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1090, in render
-    self.environment.handle_exception()
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 832, in handle_exception
-    reraise(*rewrite_traceback_stack(source=source))
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/jinja2/_compat.py", line 28, in reraise
-    raise value.with_traceback(tb)
-  File "/Users/erinjohnson/Development/tiny_blog/app/templates/errors/404.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 832, in handle_exception
-    reraise(*rewrite_traceback_stack(source=source))
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/jinja2/_compat.py", line 28, in reraise
-    raise value.with_traceback(tb)
-  File "/Users/erinjohnson/Development/tiny_blog/app/templates/base.html", line 22, in template
-    <a class="navbar-brand" href="{{ url_for(main.index') }}">Microblog</a>
-jinja2.exceptions.TemplateSyntaxError: expected token ',', got 'string'
-2020-05-14 14:31:56,229 INFO: Tinyblog startup [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:71]
-2020-05-14 14:32:16,250 ERROR: Exception on /auth/login [POST] [in /Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py:1892]
 Traceback (most recent call last):
   File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -59,12 +21,86 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/erinjohnson/Development/tiny_blog/app/auth/routes.py", line 24, in login
-    if not next_page or url_parse(next_page).netloc != '':
-NameError: name 'url_parse' is not defined
-2020-05-14 14:33:28,559 INFO: Tinyblog startup [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:71]
-2020-05-14 14:37:55,895 INFO: Tinyblog startup [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:71]
-2020-05-14 18:54:37,121 INFO: Tinyblog startup [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:75]
-2020-05-14 18:58:20,373 INFO: Tinyblog startup [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:75]
-2020-05-14 19:25:09,320 INFO: Tinyblog startup [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:75]
-2020-05-14 19:34:26,383 INFO: Tinyblog startup [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:75]
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/erinjohnson/Development/tiny_blog/app/main/routes.py", line 145, in notifications
+    } for n in notifications])
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3405, in __iter__
+    return self._execute_and_instances(context)
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3430, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 984, in execute
+    return meth(self, multiparams, params)
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 293, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1103, in _execute_clauseelement
+    distilled_params,
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1288, in _execute_context
+    e, statement, parameters, cursor, context
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1482, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 178, in raise_
+    raise exception
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1248, in _execute_context
+    cursor, statement, parameters, context
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 590, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) near "ASC": syntax error
+[SQL: SELECT notification.id AS notification_id, notification.name AS notification_name, notification.user_id AS notification_user_id, notification.timestamp AS notification_timestamp, notification.payload_json AS notification_payload_json 
+FROM notification 
+WHERE ? = notification.user_id AND notification.timestamp ASC]
+[parameters: (1,)]
+(Background on this error at: http://sqlalche.me/e/e3q8)
+2020-05-19 15:03:59,539 ERROR: Exception on /notifications [GET] [in /Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py:1892]
+Traceback (most recent call last):
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1248, in _execute_context
+    cursor, statement, parameters, context
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 590, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: near "ASC": syntax error
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/erinjohnson/Development/tiny_blog/app/main/routes.py", line 145, in notifications
+    } for n in notifications])
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3405, in __iter__
+    return self._execute_and_instances(context)
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3430, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 984, in execute
+    return meth(self, multiparams, params)
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 293, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1103, in _execute_clauseelement
+    distilled_params,
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1288, in _execute_context
+    e, statement, parameters, cursor, context
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1482, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 178, in raise_
+    raise exception
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1248, in _execute_context
+    cursor, statement, parameters, context
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 590, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) near "ASC": syntax error
+[SQL: SELECT notification.id AS notification_id, notification.name AS notification_name, notification.user_id AS notification_user_id, notification.timestamp AS notification_timestamp, notification.payload_json AS notification_payload_json 
+FROM notification 
+WHERE ? = notification.user_id AND notification.timestamp ASC]
+[parameters: (1,)]
+(Background on this error at: http://sqlalche.me/e/e3q8)

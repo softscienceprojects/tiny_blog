@@ -1,10 +1,10 @@
-2020-05-19 13:28:24,113 ERROR: Exception on / [GET] [in /Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py:1892]
+2020-05-19 15:05:16,309 ERROR: Exception on /notifications [GET] [in /Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py:1892]
 Traceback (most recent call last):
   File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1248, in _execute_context
     cursor, statement, parameters, context
   File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 590, in do_execute
     cursor.execute(statement, parameters)
-sqlite3.OperationalError: no such column: user.last_message_read_time
+sqlite3.OperationalError: near "ASC": syntax error
 
 The above exception was the direct cause of the following exception:
 
@@ -17,34 +17,14 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
     raise value
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 1948, in full_dispatch_request
-    rv = self.preprocess_request()
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 2242, in preprocess_request
-    rv = func()
-  File "/Users/erinjohnson/Development/tiny_blog/app/main/routes.py", line 13, in before_request
-    if current_user.is_authenticated:
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/werkzeug/local.py", line 347, in __getattr__
-    return getattr(self._get_current_object(), name)
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/werkzeug/local.py", line 306, in _get_current_object
-    return self.__local()
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 26, in <lambda>
-    current_user = LocalProxy(lambda: _get_user())
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 346, in _get_user
-    current_app.login_manager._load_user()
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask_login/login_manager.py", line 318, in _load_user
-    user = self._user_callback(user_id)
-  File "/Users/erinjohnson/Development/tiny_blog/app/models.py", line 96, in load_user
-    return User.query.get(int(id))
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 1004, in get
-    return self._get_impl(ident, loading.load_on_pk_identity)
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 1121, in _get_impl
-    return db_load_fn(self, primary_key_identity)
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/orm/loading.py", line 287, in load_on_pk_identity
-    return q.one()
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3360, in one
-    ret = self.one_or_none()
-  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3329, in one_or_none
-    ret = list(self)
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/erinjohnson/Development/tiny_blog/app/main/routes.py", line 145, in notifications
+    } for n in notifications])
   File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3405, in __iter__
     return self._execute_and_instances(context)
   File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3430, in _execute_and_instances
@@ -65,14 +45,9 @@ Traceback (most recent call last):
     cursor, statement, parameters, context
   File "/Users/erinjohnson/Development/tiny_blog/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 590, in do_execute
     cursor.execute(statement, parameters)
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: user.last_message_read_time
-[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password_hash AS user_password_hash, user.about_me AS user_about_me, user.last_seen AS user_last_seen, user.last_message_read_time AS user_last_message_read_time 
-FROM user 
-WHERE user.id = ?]
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) near "ASC": syntax error
+[SQL: SELECT notification.id AS notification_id, notification.name AS notification_name, notification.user_id AS notification_user_id, notification.timestamp AS notification_timestamp, notification.payload_json AS notification_payload_json 
+FROM notification 
+WHERE ? = notification.user_id AND notification.timestamp ASC]
 [parameters: (1,)]
 (Background on this error at: http://sqlalche.me/e/e3q8)
-2020-05-19 13:28:53,672 INFO: Tinyblog startup [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:71]
-2020-05-19 13:29:06,191 INFO: Tinyblog startup [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:71]
-2020-05-19 13:29:15,986 INFO: Tinyblog startup [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:71]
-2020-05-19 13:29:19,799 INFO: Tinyblog startup [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:71]
-2020-05-19 13:30:40,860 INFO: Tinyblog startup [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:71]
