@@ -17,3 +17,4 @@ class Config(object):
     ADMINS = ['picklerick@mailinator.com'] #who will receive error reports
     MS_TRANSLATOR_KEY = os.environ.get('MS_TRANSLATOR_KEY')
     POSTS_PER_PAGE = 5
+    REDIS_URL = os.environ.get('REDUS_URL') or 'redis://'

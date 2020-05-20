@@ -10,6 +10,8 @@ from flask_moment import Moment
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 from config import Config
+from redis import Redis
+import rq
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -23,6 +25,8 @@ moment = Moment()
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
+    app.redis = Redis.from_url(app.config['REDIS_URL'])
+    app.task_queue = rq.Queue('tinyblog-tasks', connection=app.redis)
 
     db.init_app(app)
     migrate.init_app(app, db)

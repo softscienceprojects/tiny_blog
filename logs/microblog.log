@@ -53,3 +53,5 @@ WHERE ? = notification.user_id AND notification.timestamp ASC]
 (Background on this error at: http://sqlalche.me/e/e3q8)
 2020-05-19 15:08:58,912 INFO: Tinyblog startup [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:71]
 2020-05-20 12:17:28,931 INFO: Tinyblog startup [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:71]
+2020-05-20 12:35:56,026 INFO: Tinyblog startup [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:71]
+2020-05-20 12:36:03,017 INFO: Tinyblog startup [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:71]
