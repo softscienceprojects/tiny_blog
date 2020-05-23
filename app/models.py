@@ -158,7 +158,7 @@ class User(PaginatedAPIMixin, UserMixin, db.Model):
             data['email']
         return data
 
-    def from_dict(self, new_user=False):
+    def from_dict(self, data, new_user=False):
         for field in ['username', 'email', 'about_me']:
             if field in data:
                 setattr(self, field, data[field])
