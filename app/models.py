@@ -1,5 +1,6 @@
+import os
 from hashlib import md5
-from datetime import datetime
+from datetime import datetime, timedelta
 from time import time
 from flask import current_app, url_for
 import jwt
@@ -9,6 +10,7 @@ from flask_login import UserMixin
 from app import db, login
 import redis
 import rq
+import base64
 
 followers = db.Table('followers', #since this is an association table no need to make part of a class
     db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
@@ -52,6 +54,8 @@ class User(PaginatedAPIMixin, UserMixin, db.Model):
     )
     notifications = db.relationship('Notification', backref='user', lazy='dynamic')
     tasks = db.relationship('Task', backref='user', lazy='dynamic')
+    token = db.Column(db.String(32), index=True, unique=True)
+    token_expiration = db.Column(db.DateTime)
 
     def __repr__(self):
         return '<User {}>'.format(self.username)  
@@ -75,6 +79,25 @@ class User(PaginatedAPIMixin, UserMixin, db.Model):
         except:
             return
         return User.query.get(id)
+
+    def get_token(self, expires_in=3600):
+        now = datetime.utcnow()
+        if self.token and self.token_expiration > now + timedelta(seconds=60):
+            return self.token
+        self.token = base64.b64encode(os.urandom(24)).decode('utf-8')
+        self.token_expiration = now + timedelta(seconds=expires_in)
+        db.session.add(self)
+        return self.token
+
+    def revoke_token(self):
+        self.token_expiration = datetime.utcnow() - timedelta(seconds=1)
+
+    @staticmethod
+    def check_token(token):
+        user = User.query.filter_by(token=token).first()
+        if user is None or user.token_expiration < datetime.utcnow():
+            return None
+        return user
 
     def avatar(self, size):
         digest = md5(self.email.lower().encode('utf-8')).hexdigest()
