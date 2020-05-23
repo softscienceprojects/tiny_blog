@@ -50,3 +50,4 @@ AttributeError: type object 'User' has no attribute 'query_or_404'
 2020-05-23 15:22:31,371 INFO: Tinyblog startup [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:81]
 2020-05-23 16:56:59,429 INFO: Tinyblog startup [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:81]
 2020-05-23 16:57:05,641 INFO: Tinyblog startup [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:81]
+2020-05-23 17:40:12,192 INFO: Tinyblog startup [in /Users/erinjohnson/Development/tiny_blog/app/__init__.py:81]
